@@ -6,21 +6,21 @@ city=str(input())
 url="https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid="+userapi
 
 api=requests.get(url)
-##api_data is a dictionary from which elements are to be extracted
+##data is a dictionary from which elements are to be extracted
 #print(api.json())
-api_data = api.json()
+data = api.json()
 
-temp_city = ((api_data['main']['temp']) - 273.15)
-weather_desc = api_data['weather'][0]['description']
-hmdt = api_data['main']['humidity']
-wind_spd = api_data['wind']['speed']
+temp_city = ((data['main']['temp']) - 273.15)
+weather_desc = data['weather'][0]['description']
+hmdt = data['main']['humidity']
+wind_spd = data['wind']['speed']
 date_time = datetime.now().strftime("%d %b %Y | %I:%M:%S %p")
 
 print ("-------------------------------------------------------------")
 print ("Weather Stats for - {}  || {}".format(city.upper(), date_time))
 print ("-------------------------------------------------------------")
 
-print ("Current temperature is: {:.2f} deg C".format(temp_city))
-print ("Current weather desc  :",weather_desc)
-print ("Current Humidity      :",hmdt, '%')
-print ("Current wind speed    :",wind_spd ,'kmph')
+print ("Temperature is: {:.2f} deg C".format(temp_city))
+print ("Weather desc  :",weather_desc)
+print ("Humidity      :",hmdt, '%')
+print ("Wind speed    :",wind_spd ,'kmph')
